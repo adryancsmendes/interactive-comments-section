@@ -1,0 +1,32 @@
+@use 'variables'
+
+@mixin container
+    max-width: variables.$container-width
+    margin: 0 auto
+
+@mixin flex-center
+    display: flex
+    justify-content: center
+    align-items: center
+
+
+//Media Queries
+@mixin tablet-devices
+    @media(min-width: 480px)
+        @content
+
+@mixin medium-devices
+    @media(min-width: 768px)
+        @content
+
+@mixin large-devices
+    @media(min-width: 992px)
+        @content
+
+@mixin extra-large-devices
+    @media(min-width: 1200px)
+        @content
+
+@mixin extra-extra-large-devices
+    @media(min-width: 1440px)
+        @content
