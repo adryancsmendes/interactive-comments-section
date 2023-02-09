@@ -9,6 +9,7 @@
 
     body
         min-height: 100vh
+        background: variables.$very-light-gray
 
         p
             font-size: 1rem
@@ -19,3 +20,72 @@
 
             &:hover
                 transition: .4s
+
+        .container
+            @include mixins.container
+
+            .principal
+                @include mixins.flex-center
+
+                .comments
+                    margin: 3rem 1.5rem
+
+                    &-comment
+                        background: variables.$white
+                        padding: 1rem
+                        border-radius: 0.5rem
+                        margin: 1rem 0
+                        @include mixins.flex-center
+                        flex-direction: column
+                        align-items: flex-start
+                        gap: 1rem
+
+                        &-user
+
+                            &-infos
+                                @include mixins.flex-center
+                                justify-content: flex-start
+                                gap: 0.75rem
+
+                                img
+                                    max-width: 2rem
+                                    height: auto
+
+                                h3
+                                    font-weight: 500
+
+                        &-interactions
+                            color: variables.$moderate-blue
+                            width: 100%
+                            display: flex
+                            justify-content: space-between
+                            font-weight: 500
+
+                            &-feedback
+                                display: flex
+                                justify-content: space-between
+                                width: 30%
+                                background: variables.$very-light-gray
+                                padding: 0.5rem
+                                max-width: 6rem
+                                border-radius: 0.5rem
+
+                                img
+                                    max-width: 100%
+                                    height: auto
+                                    object-fit: contain
+
+
+                            &-actions
+                                width: 30%
+                                display: flex
+                                flex-direction: row-reverse
+                                justify-content: space-between
+                                align-items: center
+                                max-width: 4rem
+
+                                img
+                                    max-width: 100%
+                                    height: auto
+                                    object-fit: contain
+                                    max-height: 0.75rem

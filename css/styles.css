@@ -6,6 +6,7 @@
 }
 * body {
   min-height: 100vh;
+  background: #f5f6fa;
 }
 * body p {
   font-size: 1rem;
@@ -16,6 +17,79 @@
 }
 * body a:hover {
   transition: 0.4s;
+}
+* body .container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+* body .container .principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+* body .container .principal .comments {
+  margin: 3rem 1.5rem;
+}
+* body .container .principal .comments-comment {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+* body .container .principal .comments-comment-user-infos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+* body .container .principal .comments-comment-user-infos img {
+  max-width: 2rem;
+  height: auto;
+}
+* body .container .principal .comments-comment-user-infos h3 {
+  font-weight: 500;
+}
+* body .container .principal .comments-comment-interactions {
+  color: #5457b6;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+* body .container .principal .comments-comment-interactions-feedback {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  background: #f5f6fa;
+  padding: 0.5rem;
+  max-width: 6rem;
+  border-radius: 0.5rem;
+}
+* body .container .principal .comments-comment-interactions-feedback img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+* body .container .principal .comments-comment-interactions-actions {
+  width: 30%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 4rem;
+}
+* body .container .principal .comments-comment-interactions-actions img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 0.75rem;
 }
 
 /*# sourceMappingURL=styles.css.map */
