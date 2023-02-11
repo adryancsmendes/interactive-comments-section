@@ -26,9 +26,13 @@
 
             .principal
                 @include mixins.flex-center
+                flex-direction: column
 
                 .comments
                     margin: 3rem 1.5rem
+
+                    @include mixins.medium-devices
+                        max-width: 650px
 
                     &-comment
                         background: variables.$white
@@ -53,6 +57,9 @@
 
                                 h3
                                     font-weight: 500
+
+                                &-date
+                                    color: variables.$grayish-blue
 
                         &-interactions
                             color: variables.$moderate-blue
@@ -89,3 +96,62 @@
                                     height: auto
                                     object-fit: contain
                                     max-height: 0.75rem
+
+                        &-text
+                            color: variables.$grayish-blue
+                            line-height: 1.5rem
+                            
+                                
+
+                .new-comment
+                    background: variables.$white
+                    margin: 3rem 1.5rem
+                    width: 90%
+                    
+                    padding: 1.5rem
+                    
+                    
+                    @include mixins.medium-devices
+                        max-width: 650px
+
+                    &-div
+                        position: relative
+                        min-height: 125px
+                        width: 100%
+                        &-user
+                            height: 100%
+                            width: 100%
+                            flex-direction: column-reverse
+                            position: absolute
+
+                            img
+                                max-width: 2rem
+                                height: auto
+                                object-fit: cover
+                                position: absolute
+                                bottom: 0
+                                left: 0
+
+                            &-form
+                                display: flex
+                                flex-direction: column
+                                align-items: flex-end
+
+                                &-text
+                                    width: 100%
+                                    min-height: 75px
+                                    max-height: 75px
+                                    border: solid 1px variables.$light-gray
+                                    border-radius: 0.5rem
+                                    padding: 0.5rem
+                                    position: relative
+
+                                    &::placeholder
+                                        position: absolute
+
+                                &-button
+                                    max-width: 4rem
+                                    position: absolute
+                                    bottom: 0
+                                    
+                        
