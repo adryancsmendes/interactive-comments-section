@@ -81,6 +81,18 @@
   max-width: 6rem;
   border-radius: 0.5rem;
 }
+* body .container .principal .comments-comment-interactions-feedback-score {
+  color: #5457b6;
+  font-weight: bold;
+  width: 100%;
+  max-width: 5rem;
+  border: none;
+  background: none;
+  text-align: center;
+}
+* body .container .principal .comments-comment-interactions-feedback-score:focus-visible {
+  border-color: blue;
+}
 * body .container .principal .comments-comment-interactions-feedback img {
   max-width: 100%;
   height: auto;
@@ -146,10 +158,6 @@
   border: solid 1px #eaecf1;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  position: relative;
-}
-* body .container .principal .new-comment-div-user-form-text::placeholder {
-  position: absolute;
 }
 * body .container .principal .new-comment-div-user-form-button {
   max-width: 4rem;

@@ -11,7 +11,7 @@ fetch("data.json")
     return response.json();
   })
   .then((data) => {
-    
+
     comments.innerHTML = ""; // clear the loading indicator
 
     data.comments.forEach((comment) => {
@@ -54,14 +54,18 @@ fetch("data.json")
       let feedbackImgPlus = document.createElement("img");
       feedbackImgPlus.src = "/images/icon-plus.svg";
       feedbackImgPlus.alt = "icon-plus";
+      feedbackImgPlus.setAttribute('data-feedback', 'plus');
 
-      let feedbackScore = document.createElement("span");
+      let feedbackScore = document.createElement("input");
       feedbackScore.classList.add("comments-comment-interactions-feedback-score");
-      feedbackScore.textContent = comment.score;
+      feedbackScore.setAttribute('value',`${comment.score}`)
+      feedbackScore.setAttribute('type','text');
+      
 
       let feedbackImgMinus = document.createElement("img");
       feedbackImgMinus.src = "/images/icon-minus.svg";
       feedbackImgMinus.alt = "icon-minus";
+      feedbackImgMinus.setAttribute('data-feedback', 'minus');
 
       let actionsDiv = document.createElement("div");
       actionsDiv.classList.add("comments-comment-interactions-actions");
@@ -141,14 +145,17 @@ fetch("data.json")
           let replyFeedbackImgPlus = document.createElement("img");
           replyFeedbackImgPlus.src = "/images/icon-plus.svg";
           replyFeedbackImgPlus.alt = "icon-plus";
+          replyFeedbackImgPlus.setAttribute('data-feedback', 'plus');
 
-          let replyFeedbackScore = document.createElement("span");
+          let replyFeedbackScore = document.createElement("input");
           replyFeedbackScore.classList.add("comments-comment-interactions-feedback-score", "comments-comment-reply-interactions-feedback-score");
-          replyFeedbackScore.textContent = reply.score;
+          replyFeedbackScore.setAttribute('value',`${reply.score}`)
+          replyFeedbackScore.setAttribute('type','text');
 
           let replyFeedbackImgMinus = document.createElement("img");
           replyFeedbackImgMinus.src = "/images/icon-minus.svg";
           replyFeedbackImgMinus.alt = "icon-minus";
+          replyFeedbackImgMinus.setAttribute('data-feedback', 'minus');
 
           let replyActionsDiv = document.createElement("div");
           replyActionsDiv.classList.add("comments-comment-interactions-actions", "comments-comment-reply-interactions-actions");
@@ -200,19 +207,19 @@ fetch("data.json")
 
     let newCommentUserForm = document.createElement("form");
     newCommentUserForm.classList.add("new-comment-div-user-form")
-    newCommentUserForm.setAttribute('action','');
+    newCommentUserForm.setAttribute('action', '');
 
     let newCommentUserFormText = document.createElement("input");
-    newCommentUserFormText.setAttribute('type','text');
-    newCommentUserFormText.setAttribute('placeholder','Add a comment...');
+    newCommentUserFormText.setAttribute('type', 'text');
+    newCommentUserFormText.setAttribute('placeholder', 'Add a comment...');
     newCommentUserFormText.classList.add("new-comment-div-user-form-text")
 
     let newCommentUserFormButton = document.createElement("input");
-    newCommentUserFormButton.setAttribute('type','submit');
+    newCommentUserFormButton.setAttribute('type', 'submit');
     newCommentUserFormButton.innerHTML = 'Send';
     newCommentUserFormButton.classList.add("new-comment-div-user-form-button");
-    
-    
+
+
     //Append elements
     newCommentUserForm.appendChild(newCommentUserFormText)
     newCommentUserForm.appendChild(newCommentUserFormButton)
@@ -224,8 +231,30 @@ fetch("data.json")
 
     newComment.appendChild(newCommentDiv);
 
+
+    const ratingButtons = document.querySelectorAll("[data-feedback]");
+    ratingButtons.forEach((elemento) => {
+      elemento.addEventListener("click", (evento) => {
+        elemento.style.pointerEvents = "none";
+        if(elemento.dataset.feedback == "plus"){
+          console.log('plus')
+          elemento.parentNode.children[1].value += 1
+        }
+        if(elemento.dataset.feedback == "minus"){
+          console.log("minus")
+          elemento.parentNode.children[1].value -= 1
+          
+        }
+        
+      })
+     
+    });
+    
   })
   .catch((error) => {
     // Show error message
     comments.innerHTML = `<div class="error">Error: ${error.message}</div>`;
   });
+
+
+

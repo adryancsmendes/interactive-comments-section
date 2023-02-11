@@ -77,6 +77,19 @@
                                 max-width: 6rem
                                 border-radius: 0.5rem
 
+                                &-score
+                                    color: variables.$moderate-blue
+                                    font-weight: bold
+                                    width: 100%
+                                    max-width: 5rem
+                                    border: none
+                                    background: none
+                                    text-align: center
+
+                                    &:focus-visible
+                                        border-color: blue
+                                        
+
                                 img
                                     max-width: 100%
                                     height: auto
@@ -144,10 +157,7 @@
                                     border: solid 1px variables.$light-gray
                                     border-radius: 0.5rem
                                     padding: 0.5rem
-                                    position: relative
-
-                                    &::placeholder
-                                        position: absolute
+                                    
 
                                 &-button
                                     max-width: 4rem
