@@ -37,6 +37,7 @@
   }
 }
 * body .container .principal .comments-comment {
+  width: 100%;
   background: #fff;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -82,7 +83,8 @@
   border-radius: 0.5rem;
 }
 * body .container .principal .comments-comment-interactions-feedback-score {
-  color: #5457b6;
+  color: transparent;
+  text-shadow: 0 0 0 #5457b6;
   font-weight: bold;
   width: 100%;
   max-width: 5rem;
@@ -90,13 +92,17 @@
   background: none;
   text-align: center;
 }
-* body .container .principal .comments-comment-interactions-feedback-score:focus-visible {
-  border-color: blue;
+* body .container .principal .comments-comment-interactions-feedback-score:focus {
+  box-shadow: none;
+  outline: none;
 }
 * body .container .principal .comments-comment-interactions-feedback img {
   max-width: 100%;
   height: auto;
   object-fit: contain;
+}
+* body .container .principal .comments-comment-interactions-feedback img:hover {
+  cursor: pointer;
 }
 * body .container .principal .comments-comment-interactions-actions {
   width: 30%;
@@ -105,6 +111,9 @@
   justify-content: space-between;
   align-items: center;
   max-width: 4rem;
+}
+* body .container .principal .comments-comment-interactions-actions-current-user {
+  max-width: 3.25rem;
 }
 * body .container .principal .comments-comment-interactions-actions img {
   max-width: 100%;
@@ -115,6 +124,28 @@
 * body .container .principal .comments-comment-text {
   color: #67727e;
   line-height: 1.5rem;
+  word-break: break-word;
+}
+* body .container .principal .comments-comment-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+}
+* body .container .principal .comments-comment-content:nth-child(2)::before {
+  position: absolute;
+  content: "";
+  height: 63.2%;
+  width: 2px;
+  background: #eaecf1;
+  left: 0;
+  bottom: 0.9rem;
+}
+* body .container .principal .comments-comment-content .comments-reply {
+  max-width: 92%;
+}
+* body .container .principal .comments-comment-content .comments-reply .comments-comment-reply-interactions-actions-current-user {
+  max-width: 3.25rem;
 }
 * body .container .principal .new-comment {
   background: #fff;
@@ -143,7 +174,7 @@
   height: auto;
   object-fit: cover;
   position: absolute;
-  bottom: 0;
+  bottom: 0rem;
   left: 0;
 }
 * body .container .principal .new-comment-div-user-form {
@@ -159,10 +190,24 @@
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
+* body .container .principal .new-comment-div-user-form-text:focus {
+  box-shadow: none;
+  outline: solid 1px #5457b6;
+}
 * body .container .principal .new-comment-div-user-form-button {
-  max-width: 4rem;
   position: absolute;
-  bottom: 0;
+  bottom: -0.5rem;
+  border: none;
+  color: #fff;
+  background: #5457b6;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+* body .container .principal .new-comment-div-user-form-button:hover {
+  transition: 0.4s;
+  cursor: pointer;
+  opacity: 0.3;
 }
 
 /*# sourceMappingURL=styles.css.map */

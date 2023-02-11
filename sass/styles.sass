@@ -33,8 +33,10 @@
 
                     @include mixins.medium-devices
                         max-width: 650px
-
+                    
+                    
                     &-comment
+                        width: 100%
                         background: variables.$white
                         padding: 1rem
                         border-radius: 0.5rem
@@ -68,6 +70,9 @@
                             justify-content: space-between
                             font-weight: 500
 
+                        
+                                
+
                             &-feedback
                                 display: flex
                                 justify-content: space-between
@@ -78,7 +83,8 @@
                                 border-radius: 0.5rem
 
                                 &-score
-                                    color: variables.$moderate-blue
+                                    color: transparent
+                                    text-shadow: 0 0 0 variables.$moderate-blue
                                     font-weight: bold
                                     width: 100%
                                     max-width: 5rem
@@ -86,14 +92,17 @@
                                     background: none
                                     text-align: center
 
-                                    &:focus-visible
-                                        border-color: blue
-                                        
+                                    &:focus
+                                        box-shadow: none
+                                        outline: none
 
                                 img
                                     max-width: 100%
                                     height: auto
                                     object-fit: contain
+
+                                    &:hover
+                                        cursor: pointer
 
 
                             &-actions
@@ -103,6 +112,9 @@
                                 justify-content: space-between
                                 align-items: center
                                 max-width: 4rem
+                                
+                                &-current-user
+                                        max-width: 3.25rem
 
                                 img
                                     max-width: 100%
@@ -110,17 +122,48 @@
                                     object-fit: contain
                                     max-height: 0.75rem
 
+                            
+                            
+
                         &-text
                             color: variables.$grayish-blue
                             line-height: 1.5rem
+                            word-break: break-word
                             
+                        &-content
+                            display: flex
+                            flex-direction: column
+                            align-items: flex-end
+                            position: relative
+
+                            &:nth-child(2)
+
+                                &::before
+                                    position: absolute
+                                    content: ''
+                                    height: 63.2%
+                                    width: 2px
+                                    background: variables.$light-gray
+                                    left: 0
+                                    bottom: 0.9rem
+
+                            .comments-reply
+                                max-width: 92%
+
+                                .comments-comment-reply-interactions
+
+                                    &-actions-current-user
+                                        max-width: 3.25rem
+                                
+                                
+                                    
+                                
                                 
 
                 .new-comment
                     background: variables.$white
                     margin: 3rem 1.5rem
                     width: 90%
-                    
                     padding: 1.5rem
                     
                     
@@ -142,7 +185,7 @@
                                 height: auto
                                 object-fit: cover
                                 position: absolute
-                                bottom: 0
+                                bottom: 0rem
                                 left: 0
 
                             &-form
@@ -157,11 +200,25 @@
                                     border: solid 1px variables.$light-gray
                                     border-radius: 0.5rem
                                     padding: 0.5rem
+
+                                    &:focus
+                                        box-shadow: none
+                                        outline: solid 1px variables.$moderate-blue
                                     
 
                                 &-button
-                                    max-width: 4rem
                                     position: absolute
-                                    bottom: 0
+                                    bottom: -0.5rem
+                                    border: none
+                                    color: variables.$white
+                                    background: variables.$moderate-blue
+                                    padding: 1rem 2rem
+                                    border-radius: 0.5rem
+                                    text-transform: uppercase
+
+                                    &:hover
+                                        transition: .4s
+                                        cursor: pointer
+                                        opacity: 0.3
                                     
                         
