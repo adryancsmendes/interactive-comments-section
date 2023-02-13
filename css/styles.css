@@ -397,6 +397,11 @@
   font-weight: 500;
   transition: 0.4s;
 }
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-delete:hover {
+  cursor: pointer;
+  transition: 0.4s;
+  transform: scale(1.1);
+}
 * body .container .principal .comments-comment-content:nth-child(2)::before {
   position: absolute;
   content: "";
