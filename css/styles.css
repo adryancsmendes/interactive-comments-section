@@ -284,9 +284,11 @@
   color: #fff;
   font-size: 0.75rem;
   border-radius: 0.25rem;
+  display: none;
 }
 * body .container .principal .comments-comment-content .new-comment-div-user-infos-date {
   color: #67727e;
+  display: none;
 }
 * body .container .principal .comments-comment-content .new-comment-div-sub {
   display: flex;
@@ -357,6 +359,11 @@
   object-fit: contain;
   max-height: 0.75rem;
 }
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-edit:hover {
+  cursor: pointer;
+  transition: 0.4s;
+  transform: scale(1.1);
+}
 * body .container .principal .comments-comment-content .new-comment-div-sub-interactions-send {
   padding: 0.75rem;
   color: #fff;
@@ -370,6 +377,25 @@
   right: 1rem;
   width: 100%;
   max-width: 5rem;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-send:hover {
+  cursor: pointer;
+  transition: 0.4s;
+  transform: scale(1.1);
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-delete {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 4.25rem;
+  justify-content: space-between;
+  align-items: center;
+  color: red;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-weight: 500;
+  transition: 0.4s;
 }
 * body .container .principal .comments-comment-content:nth-child(2)::before {
   position: absolute;

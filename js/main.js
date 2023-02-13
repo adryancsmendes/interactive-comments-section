@@ -202,7 +202,7 @@ botaoEditar.forEach((elemento) => {
   elemento.addEventListener("click", () => {
     elemento.classList.toggle("active");
     let divComentario = elemento.parentNode.parentNode;
-    console.log(divComentario);
+    
     let textoEditavel = elemento.parentNode.parentNode.children[1].children[0];
 
     let botaoApagar = document.createElement("div");
@@ -214,8 +214,6 @@ botaoEditar.forEach((elemento) => {
     botaoApagar.appendChild(iconeApagar);
 
     if (elemento.classList.contains("active")) {
-      console.log("ativo")
-      console.log(elemento)
       elemento.innerHTML = "UPDATE";
 
       elemento.style.cssText =
@@ -223,13 +221,13 @@ botaoEditar.forEach((elemento) => {
         'background: #5457b6;' +
         'max-width: 5rem;' +
         'transition: .4s;' +
-        'justify-content: center;'; 
+        'justify-content: center;';
 
       textoEditavel.setAttribute("contenteditable", "true")
       textoEditavel.style.border = "solid 1px #5457b6"
       textoEditavel.style.borderRadius = "0.5rem";
       textoEditavel.style.padding = "0.5rem";
-      
+
       divComentario.appendChild(botaoApagar);
 
       //apagando comentario
@@ -264,7 +262,7 @@ botaoEditar.forEach((elemento) => {
       textoEditavel.removeAttribute("contenteditable")
       textoEditavel.style.border = "none"
       textoEditavel.style.padding = "0";
-      console.log("não ativo")
+
     }
 
   })
@@ -279,11 +277,11 @@ ratingButtons.forEach((elemento) => {
     let nomeUser = elemento.parentNode.parentNode.parentNode.children[0].children[0].children[1].innerText;
     elemento.parentNode.style.pointerEvents = "none";
     if (elemento.dataset.feedback == "plus" && nomeUser != 'juliusomo') {
-      console.log('plus')
+      
       elemento.parentNode.children[1].value = contadorLikes + 1;
     }
     if (elemento.dataset.feedback == "minus" && nomeUser != 'juliusomo') {
-      console.log("minus")
+      
       elemento.parentNode.children[1].value = contadorLikes - 1;
     }
   })
@@ -293,10 +291,10 @@ ratingButtons.forEach((elemento) => {
 
 let botaoResposta = document.querySelectorAll(".reply");
 
-botaoResposta.forEach((botao) =>{
-  botao.addEventListener("click", ()=>{
+botaoResposta.forEach((botao) => {
+  botao.addEventListener("click", () => {
     let divComentario = botao.parentNode.parentNode.parentNode;
-    
+
     //create elements
     let newCommentDiv = document.createElement("div");
     newCommentDiv.classList.add("new-comment-div");
@@ -323,13 +321,13 @@ botaoResposta.forEach((botao) =>{
     newCommentDivUserInfosDate.innerHTML = "Now";
 
     let newCommentDivSubdivision = document.createElement("div");
-    newCommentDivSubdivision.classList.add("new-comment-div-sub") 
+    newCommentDivSubdivision.classList.add("new-comment-div-sub")
 
     let newCommentDivText = document.createElement("div");
     newCommentDivText.classList.add("new-comment-div-sub-text")
 
     let newCommentDivTextP = document.createElement("p");
-    newCommentDivTextP.setAttribute("contenteditable","true");
+    newCommentDivTextP.setAttribute("contenteditable", "true");
 
     let newCommentDivInteractions = document.createElement("div");
     newCommentDivInteractions.classList.add("new-comment-div-sub-interactions")
@@ -349,11 +347,18 @@ botaoResposta.forEach((botao) =>{
     let newCommentDivEditButton = document.createElement("div");
     newCommentDivEditButton.classList.add("new-comment-div-sub-interactions-edit");
     newCommentDivEditButton.innerHTML = "Edit"
-    
 
     let newCommentDivEditButtonImg = document.createElement("img");
     newCommentDivEditButtonImg.src = "/images/icon-edit.svg";
     newCommentDivEditButtonImg.alt = "icon-edit";
+
+    let newCommentDivDeleteButton = document.createElement("div");
+    newCommentDivDeleteButton.classList.add("new-comment-div-sub-interactions-delete")
+    newCommentDivDeleteButton.innerHTML = "Delete";
+
+    let newCommentDivDeleteButtonImg = document.createElement("img");
+    newCommentDivDeleteButtonImg.src = "/images/icon-delete.svg"
+    newCommentDivDeleteButton.appendChild(newCommentDivDeleteButtonImg);
 
     //append elements
     newCommentDivText.appendChild(newCommentDivTextP);
@@ -382,35 +387,62 @@ botaoResposta.forEach((botao) =>{
     //funcionalidades
 
     //cancela adição de novo comentario
-    newCommentDivCancelButton.onclick = ()=>{
+    newCommentDivCancelButton.onclick = () => {
       divComentario.removeChild(newCommentDiv);
     }
 
     //publica comentario
-    newCommentDivInteractions.onclick = ()=>{
+    newCommentDivInteractions.onclick = () => {
       newCommentDivTextP.removeAttribute("contenteditable");
       newCommentDivTextP.style.border = "none";
       newCommentDivCancelButton.style.display = "none";
       newCommentDivReplyButton.style.display = "none";
       newCommentDivSubdivision.style.maxWidth = "100%";
       newCommentDivInteractions.appendChild(newCommentDivEditButton);
+      newCommentDivUserInfosTag.style.display = "flex";
+      newCommentDivUserInfosDate.style.display = "flex";
     }
 
     //editar comentario resposta
-    newCommentDivEditButton.onclick = () =>{
-      console.log("oi")
-      newCommentDivText.setAttribute("contenteditable","true");
-      console.log(newCommentDivTextP);
+    newCommentDivEditButton.onclick = () => {
       
+      newCommentDivText.setAttribute("contenteditable", "true");
+      newCommentDivText.style.border = "solid 1px #5457b6";
+      newCommentDivText.style.padding = "0.5rem";
+      newCommentDivText.style.borderRadius = "0.5rem";
+
       newCommentDivInteractions.appendChild(newCommentDivSendButton);
-      newCommentDivInteractions.removeChild(newCommentDivEditButton);
+      newCommentDivInteractions.appendChild(newCommentDivDeleteButton);
+      newCommentDivEditButton.style.display = "none";
+      newCommentDivDeleteButton.style.display = "flex";
     }
 
-    newCommentDivSendButton.onclick = () =>{
-      console.log("oi");
+    newCommentDivSendButton.onclick = () => {
+      
+      newCommentDivText.style.border = "none";
       newCommentDivInteractions.removeChild(newCommentDivSendButton);
       newCommentDivInteractions.appendChild(newCommentDivEditButton)
       newCommentDivText.removeAttribute("contenteditable");
+      newCommentDivEditButton.style.display = "flex";
+      newCommentDivDeleteButton.style.display = "none";
+    }
+
+    newCommentDivDeleteButton.onclick = () =>{
+      let modalApagarComentario = document.querySelector(".delete-comment-div");
+      let botaoCancelarApagarComentario = document.querySelector(".delete-comment-div-content-buttons-cancel");
+      let botaoContinuarApagarComentario = document.querySelector(".delete-comment-div-content-buttons-delete");
+
+      modalApagarComentario.classList.add("delete-comment-div-active");
+
+      botaoContinuarApagarComentario.addEventListener("click", () => {
+        modalApagarComentario.classList.remove("delete-comment-div-active")
+        newCommentDiv.remove();
+      })
+
+      botaoCancelarApagarComentario.addEventListener("click", () => {
+        modalApagarComentario.classList.remove("delete-comment-div-active")
+      })
+
     }
 
   })

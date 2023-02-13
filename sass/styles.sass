@@ -291,9 +291,11 @@
                                             color: variables.$white
                                             font-size: 0.75rem
                                             border-radius: 0.25rem
+                                            display: none
 
                                         &-date
                                             color: variables.$grayish-blue
+                                            display: none
 
                                         
 
@@ -368,6 +370,11 @@
                                                 object-fit: contain
                                                 max-height: 0.75rem
 
+                                            &:hover
+                                                cursor: pointer
+                                                transition: .4s
+                                                transform: scale(1.1)
+
                                         &-send
                                             padding: 0.75rem
                                             color: variables.$white
@@ -381,6 +388,26 @@
                                             right: 1rem
                                             width: 100%
                                             max-width: 5rem
+
+                                            &:hover
+                                                cursor: pointer
+                                                transition: .4s
+                                                transform: scale(1.1)
+                                                
+
+                                        &-delete
+                                            display: flex
+                                            flex-direction: row-reverse
+                                            width: 100%
+                                            max-width: 4.25rem
+                                            justify-content: space-between
+                                            align-items: center
+                                            color: red
+                                            position: absolute
+                                            top: 0.5rem
+                                            right: 1rem
+                                            font-weight: 500
+                                            transition: .4s
  
 
                             &:nth-child(2)
