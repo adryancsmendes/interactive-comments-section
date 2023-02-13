@@ -118,6 +118,29 @@
   gap: 1rem;
   position: relative;
 }
+* body .container .principal .comments-comment-new {
+  position: relative;
+}
+* body .container .principal .comments-comment-new .comments-comment-delete {
+  visibility: hidden;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 4.25rem;
+  justify-content: space-between;
+  align-items: center;
+  color: red;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-weight: 500;
+  transition: 0.4s;
+}
+* body .container .principal .comments-comment-new .comments-comment-delete:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.4s;
+}
 * body .container .principal .comments-comment-user-infos {
   display: flex;
   justify-content: center;
