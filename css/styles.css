@@ -217,8 +217,14 @@
 }
 * body .container .principal .comments-comment-interactions-actions-current-user {
   max-width: 3.25rem;
+  transition: 0.4s;
 }
-* body .container .principal .comments-comment-interactions-actions img {
+* body .container .principal .comments-comment-interactions-actions-current-user:hover {
+  cursor: pointer;
+  transition: 0.4s;
+  transform: scale(1.1);
+}
+* body .container .principal .comments-comment-interactions-actions-current-user img {
   max-width: 100%;
   height: auto;
   object-fit: contain;
