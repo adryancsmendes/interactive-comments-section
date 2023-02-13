@@ -27,6 +27,74 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+}
+* body .container .principal .delete-comment-div {
+  position: fixed;
+  visibility: hidden;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  top: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+}
+* body .container .principal .delete-comment-div-content {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 20rem;
+  top: 50%;
+  position: relative;
+  transform: translateY(-50%);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
+  gap: 2rem;
+}
+* body .container .principal .delete-comment-div-content h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #324152;
+}
+* body .container .principal .delete-comment-div-content-buttons {
+  display: flex;
+  max-width: 15rem;
+  justify-content: space-between;
+}
+* body .container .principal .delete-comment-div-content-buttons-cancel {
+  max-width: 7rem;
+  width: 100%;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  background: #67727e;
+  color: #fff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+* body .container .principal .delete-comment-div-content-buttons-cancel:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+* body .container .principal .delete-comment-div-content-buttons-delete {
+  width: 100%;
+  max-width: 7rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  background: #ed6468;
+  color: #fff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+* body .container .principal .delete-comment-div-content-buttons-delete:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+* body .container .principal .delete-comment-div-active {
+  visibility: visible;
 }
 * body .container .principal .comments {
   margin: 3rem 1.5rem;
@@ -48,6 +116,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  position: relative;
 }
 * body .container .principal .comments-comment-user-infos {
   display: flex;
@@ -62,6 +131,16 @@
 }
 * body .container .principal .comments-comment-user-infos h3 {
   font-weight: 500;
+}
+* body .container .principal .comments-comment-user-infos-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #5457b6;
+  padding: 0.15rem 0.25rem;
+  color: #fff;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
 }
 * body .container .principal .comments-comment-user-infos-date {
   color: #67727e;
@@ -91,6 +170,7 @@
   border: none;
   background: none;
   text-align: center;
+  pointer-events: none;
 }
 * body .container .principal .comments-comment-interactions-feedback-score:focus {
   box-shadow: none;
@@ -146,6 +226,36 @@
 }
 * body .container .principal .comments-comment-content .comments-reply .comments-comment-reply-interactions-actions-current-user {
   max-width: 3.25rem;
+  border-radius: 0.5rem;
+}
+* body .container .principal .comments-comment-content .comments-reply .comments-comment-reply-interactions-actions-current-user:hover {
+  cursor: pointer;
+  transition: 0.4s;
+  transform: scale(1.1);
+}
+* body .container .principal .comments-comment-content .comments-reply .comments-reply-delete {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 4.25rem;
+  justify-content: space-between;
+  align-items: center;
+  color: red;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-weight: 500;
+  transition: 0.4s;
+}
+* body .container .principal .comments-comment-content .comments-reply .comments-reply-delete:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+* body .container .principal .comments-comment-content .comments-reply .comments-reply-delete img {
+  width: 100%;
+  max-width: 0.8rem;
+  max-height: 0.8rem;
 }
 * body .container .principal .new-comment {
   background: #fff;

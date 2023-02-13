@@ -27,6 +27,75 @@
             .principal
                 @include mixins.flex-center
                 flex-direction: column
+                position: relative
+
+                .delete-comment-div
+                    position: fixed
+                    visibility: hidden
+                    width: 100%
+                    min-height: 100vh
+                    height: 100%
+                    top: 0
+                    overflow: hidden
+                    background: rgba(0,0,0,.5)
+
+                    &-content
+                        margin: 0 auto
+                        width: 100%
+                        max-width: 20rem
+                        top: 50%
+                        position: relative
+                        transform: translateY(-50%)
+                        background-color: #fff
+                        display: flex
+                        flex-direction: column
+                        padding: 1.25rem 1.5rem
+                        border-radius: 0.5rem
+                        gap: 2rem
+
+                        h3
+                            font-size: 1.3rem
+                            font-weight: 500
+                            color: variables.$dark-blue
+
+                        &-buttons
+                            display: flex
+                            max-width: 15rem
+                            justify-content: space-between
+
+                            &-cancel
+                                max-width:7rem
+                                width: 100%
+                                font-size: 0.8rem
+                                text-transform: uppercase
+                                background: variables.$grayish-blue
+                                color: variables.$white
+                                padding: 0.75rem
+                                border: none
+                                border-radius: 0.5rem
+
+                                &:hover
+                                    cursor: pointer
+                                    opacity: 0.5
+                                
+
+                            &-delete
+                                width: 100%
+                                max-width:7rem
+                                font-size: 0.8rem
+                                text-transform: uppercase
+                                background: variables.$soft-red
+                                color: variables.$white
+                                padding: 0.75rem
+                                border: none
+                                border-radius: 0.5rem
+
+                                &:hover
+                                    cursor: pointer
+                                    opacity: 0.5
+
+                    &-active
+                        visibility: visible
 
                 .comments
                     margin: 3rem 1.5rem
@@ -45,6 +114,7 @@
                         flex-direction: column
                         align-items: flex-start
                         gap: 1rem
+                        position: relative
 
                         &-user
 
@@ -59,6 +129,14 @@
 
                                 h3
                                     font-weight: 500
+
+                                &-tag
+                                    @include mixins.flex-center
+                                    background: variables.$moderate-blue
+                                    padding: 0.15rem 0.25rem
+                                    color: variables.$white
+                                    font-size: 0.75rem
+                                    border-radius: 0.25rem
 
                                 &-date
                                     color: variables.$grayish-blue
@@ -91,6 +169,7 @@
                                     border: none
                                     background: none
                                     text-align: center
+                                    pointer-events: none
 
                                     &:focus
                                         box-shadow: none
@@ -103,6 +182,7 @@
 
                                     &:hover
                                         cursor: pointer
+                                        
 
 
                             &-actions
@@ -115,6 +195,7 @@
                                 
                                 &-current-user
                                         max-width: 3.25rem
+                                        
 
                                 img
                                     max-width: 100%
@@ -149,11 +230,42 @@
 
                             .comments-reply
                                 max-width: 92%
-
+                          
                                 .comments-comment-reply-interactions
 
                                     &-actions-current-user
                                         max-width: 3.25rem
+                                        border-radius: 0.5rem
+
+                                        &:hover
+                                            cursor: pointer
+                                            transition: .4s
+                                            transform: scale(1.1)
+
+                                .comments-reply-delete
+                                    display: flex
+                                    flex-direction: row-reverse
+                                    width: 100%
+                                    max-width: 4.25rem
+                                    justify-content: space-between
+                                    align-items: center
+                                    color: red
+                                    position: absolute
+                                    top: 1rem
+                                    right: 1rem
+                                    font-weight: 500
+                                    transition: .4s
+
+                                    &:hover
+                                        cursor: pointer
+                                        transform: scale(1.1)
+                                        transition: .4s
+
+                                    img
+                                        width: 100%
+                                        max-width: 0.8rem
+                                        max-height: 0.8rem
+                                        
                                 
                                 
                                     

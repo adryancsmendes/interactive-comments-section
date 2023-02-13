@@ -1,392 +1,217 @@
 let comments = document.getElementById("comments-div");
 let newComment = document.getElementById("new-comment");
-// Show loading indicator
-comments.innerHTML = `<div class="loading">Loading...</div>`;
 
-fetch("data.json")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    return response.json();
-  })
-  .then((data) => {
 
-    comments.innerHTML = ""; // clear the loading indicator
+//Adicionar novo comentário
+const novoComentarioForm = document.getElementById("novo-comentario");
 
-    data.comments.forEach((comment) => {
-      // Create elements
-      //Main comments
+novoComentarioForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-      let commentDiv = document.createElement("div");
-      commentDiv.classList.add("comments-comment")
+  let textoComentario = document.getElementById("novo-comentario-texto").value;
 
-      let commentDivContent = document.createElement("div");
-      commentDivContent.classList.add("comments-comment-content")
+  //criando elementos
 
-      let userDiv = document.createElement("div");
-      userDiv.classList.add("comments-comment-user")
+  let commentDiv = document.createElement("div");
+  commentDiv.classList.add("comments-comment")
 
-      let userInfosDiv = document.createElement("div");
-      userInfosDiv.classList.add("comments-comment-user-infos")
 
-      let userImg = document.createElement("img");
-      userImg.src = `${comment.user.image.png}`;
-      userImg.alt = `${comment.user.image.alt}`;
+  let commentDivContent = document.createElement("div");
+  commentDivContent.classList.add("comments-comment-content")
 
-      let userName = document.createElement("h3");
-      userName.classList.add("comments-comment-user-infos-name");
-      userName.textContent = comment.user.username;
+  let userDiv = document.createElement("div");
+  userDiv.classList.add("comments-comment-user")
 
-      let date = document.createElement("div");
-      date.classList.add("comments-comment-user-infos-date");
-      date.textContent = comment.createdAt;
+  let userInfosDiv = document.createElement("div");
+  userInfosDiv.classList.add("comments-comment-user-infos")
 
-      let textDiv = document.createElement("div");
-      textDiv.classList.add("comments-comment-text");
+  let userImg = document.createElement("img");
+  userImg.src = "images/avatars/image-juliusomo.png";
 
-      let textP = document.createElement("p");
-      textP.textContent = comment.content;
+  let userName = document.createElement("h3");
+  userName.classList.add("comments-comment-user-infos-name");
+  userName.textContent = "juliusomo";
 
-      let interactionsDiv = document.createElement("div");
-      interactionsDiv.classList.add("comments-comment-interactions");
+  let userTag = document.createElement("div");
+  userTag.classList.add("comments-comment-user-infos-tag");
+  userTag.textContent = "you";
 
-      let feedbackDiv = document.createElement("div");
-      feedbackDiv.classList.add("comments-comment-interactions-feedback");
+  let date = document.createElement("div");
+  date.classList.add("comments-comment-user-infos-date");
+  date.textContent = 'Now';
 
-      let feedbackImgPlus = document.createElement("img");
-      feedbackImgPlus.src = "/images/icon-plus.svg";
-      feedbackImgPlus.alt = "icon-plus";
-      feedbackImgPlus.setAttribute('data-feedback', 'plus');
+  let textDiv = document.createElement("div");
+  textDiv.classList.add("comments-comment-text");
 
-      let feedbackScore = document.createElement("input");
-      feedbackScore.classList.add("comments-comment-interactions-feedback-score");
-      feedbackScore.setAttribute('value', `${comment.score}`)
-      feedbackScore.setAttribute('type', 'number');
+  let textP = document.createElement("p");
+  textP.textContent = textoComentario;
 
+  let interactionsDiv = document.createElement("div");
+  interactionsDiv.classList.add("comments-comment-interactions");
 
-      let feedbackImgMinus = document.createElement("img");
-      feedbackImgMinus.src = "/images/icon-minus.svg";
-      feedbackImgMinus.alt = "icon-minus";
-      feedbackImgMinus.setAttribute('data-feedback', 'minus');
+  let feedbackDiv = document.createElement("div");
+  feedbackDiv.classList.add("comments-comment-interactions-feedback");
+  feedbackDiv.setAttribute("id","coment-user-feedback");
 
-      let actionsDiv = document.createElement("div");
-      actionsDiv.classList.add("comments-comment-interactions-actions");
-      actionsDiv.innerHTML = "Reply"
+  let feedbackImgPlus = document.createElement("img");
+  feedbackImgPlus.src = "/images/icon-plus.svg";
+  feedbackImgPlus.alt = "icon-plus";
+  feedbackImgPlus.setAttribute('data-feedback', 'plus');
 
-      let actionsImg = document.createElement("img");
-      if(comment.user.username != 'juliosomo'){
-        actionsImg.src = "/images/icon-reply.svg";
-        actionsImg.alt = "icon-reply";
-      }else{
-        actionsImg.src = "/images/icon-edit.svg";
-        actionsImg.alt = "icon-edit";
-      }
-      // Append elements
-      //Main comments
-      userInfosDiv.appendChild(userImg);
-      userInfosDiv.appendChild(userName);
-      userInfosDiv.appendChild(date);
+  let feedbackScore = document.createElement("input");
+  feedbackScore.classList.add("comments-comment-interactions-feedback-score");
+  feedbackScore.setAttribute('value', `0`)
+  feedbackScore.setAttribute('type', 'number');
 
-      userDiv.appendChild(userInfosDiv);
 
-      textDiv.appendChild(textP);
+  let feedbackImgMinus = document.createElement("img");
+  feedbackImgMinus.src = "/images/icon-minus.svg";
+  feedbackImgMinus.alt = "icon-minus";
+  feedbackImgMinus.setAttribute('data-feedback', 'minus');
 
-      interactionsDiv.appendChild(feedbackDiv);
-      interactionsDiv.appendChild(actionsDiv);
+  let actionsDiv = document.createElement("div");
+  actionsDiv.classList.add("comments-comment-interactions-actions", "comments-comment-interactions-actions-current-user");
+  actionsDiv.innerHTML = "Edit"
 
-      feedbackDiv.appendChild(feedbackImgPlus);
-      feedbackDiv.appendChild(feedbackScore);
-      feedbackDiv.appendChild(feedbackImgMinus);
+  let actionsImg = document.createElement("img");
+  actionsImg.src = "/images/icon-edit.svg";
+  actionsImg.alt = "icon-edit";
 
-      actionsDiv.appendChild(actionsImg);
+  //append elementos
 
-      commentDiv.appendChild(userDiv);
-      commentDiv.appendChild(textDiv);
-      commentDiv.appendChild(interactionsDiv);
+  userInfosDiv.appendChild(userImg);
+  userInfosDiv.appendChild(userName);
+  userInfosDiv.appendChild(userTag);
+  userInfosDiv.appendChild(date);
 
-      commentDivContent.appendChild(commentDiv);
+  userDiv.appendChild(userInfosDiv);
 
-      comments.appendChild(commentDivContent);
+  textDiv.appendChild(textP);
 
+  interactionsDiv.appendChild(feedbackDiv);
+  interactionsDiv.appendChild(actionsDiv);
 
-      //Reply comments
-      let existentReplies = comment.replies;
-      if (comment.replies != []) {
+  feedbackDiv.appendChild(feedbackImgPlus);
+  feedbackDiv.appendChild(feedbackScore);
+  feedbackDiv.appendChild(feedbackImgMinus);
 
-        existentReplies.forEach((reply) => {
+  actionsDiv.appendChild(actionsImg);
 
-          //Create elements reply
+  commentDiv.appendChild(userDiv);
+  commentDiv.appendChild(textDiv);
+  commentDiv.appendChild(interactionsDiv);
 
+  commentDivContent.appendChild(commentDiv);
 
-          let replyCommentDiv = document.createElement("div");
-          replyCommentDiv.classList.add("comments-comment", "comments-reply")
+  comments.appendChild(commentDivContent);
 
-          let replyUserDiv = document.createElement("div");
-          replyUserDiv.classList.add("comment-comments-user", "comment-comments-reply-user");
+  novoComentarioForm.reset();
 
-          let replyUserInfosDiv = document.createElement("div");
-          replyUserInfosDiv.classList.add("comments-comment-user-infos", "comments-comment-reply-user-infos")
+})
 
-          let replyUserImg = document.createElement("img");
-          replyUserImg.src = `${reply.user.image.png}`;
-          replyUserImg.alt = `${reply.user.image.alt}`;
+//editando comentário
+let botaoEditar = document.querySelectorAll(".comments-comment-reply-interactions-actions-current-user");
 
-          let replyUserName = document.createElement("h3");
-          replyUserName.classList.add("comments-comment-user-infos-name", "comments-comment-reply-user-infos-name");
-          replyUserName.textContent = reply.user.username;
+botaoEditar.forEach((elemento)=>{
+  
+  elemento.addEventListener("click", () =>{
+    elemento.classList.toggle("active");
+    let divComentario = elemento.parentNode.parentNode;
+    console.log(divComentario);
+    let textoEditavel = elemento.parentNode.parentNode.children[1].children[0];
 
-          let replyDate = document.createElement("div");
-          replyDate.classList.add("comments-comment-user-infos-date", "comments-comment-reply-user-infos-date");
-          replyDate.textContent = reply.createdAt;
+    let botaoApagar = document.createElement("div");
+    botaoApagar.classList.add("comments-comment-delete", "comments-reply-delete")
+    botaoApagar.innerHTML = "Delete";
 
-          let replyTextDiv = document.createElement("div");
-          replyTextDiv.classList.add("comments-comment-text", "comments-comment-reply-text");
+    let iconeApagar = document.createElement("img");
+    iconeApagar.src = "/images/icon-delete.svg"
+    botaoApagar.appendChild(iconeApagar);
 
-          let replyTextP = document.createElement("p");
-          replyTextP.textContent = reply.content;
+    if(elemento.classList.contains("active")){
+      console.log("ativo")
+      console.log(elemento)
+      elemento.innerHTML = "UPDATE";
 
-          let replyInteractionsDiv = document.createElement("div");
-          replyInteractionsDiv.classList.add("comments-comment-interactions", "comments-comment-reply-interactions");
-          
-
-          let replyFeedbackDiv = document.createElement("div");
-          replyFeedbackDiv.classList.add("comments-comment-interactions-feedback", "comments-comment-reply-interactions-feedback");
-
-          let replyFeedbackImgPlus = document.createElement("img");
-          replyFeedbackImgPlus.src = "/images/icon-plus.svg";
-          replyFeedbackImgPlus.alt = "icon-plus";
-          replyFeedbackImgPlus.setAttribute('data-feedback', 'plus');
-
-          let replyFeedbackScore = document.createElement("input");
-          replyFeedbackScore.classList.add("comments-comment-interactions-feedback-score", "comments-comment-reply-interactions-feedback-score");
-          replyFeedbackScore.setAttribute('value', `${reply.score}`)
-          replyFeedbackScore.setAttribute('type', 'number');
-
-          let replyFeedbackImgMinus = document.createElement("img");
-          replyFeedbackImgMinus.src = "/images/icon-minus.svg";
-          replyFeedbackImgMinus.alt = "icon-minus";
-          replyFeedbackImgMinus.setAttribute('data-feedback', 'minus');
-
-          let replyActionsDiv = document.createElement("div");
-          if(reply.user.username != 'juliusomo'){
-            replyActionsDiv.classList.add("comments-comment-interactions-actions", "comments-comment-reply-interactions-actions");
-          replyActionsDiv.innerHTML = "Reply";
-          }else{
-            replyActionsDiv.classList.add("comments-comment-interactions-actions", "comments-comment-reply-interactions-actions","comments-comment-reply-interactions-actions-current-user");
-            replyActionsDiv.innerHTML = "Edit";
-          }
-
-          let replyActionsImg = document.createElement("img");
-          if(reply.user.username != 'juliusomo'){
-            replyActionsImg.src = "/images/icon-reply.svg";
-            replyActionsImg.alt = "icon-reply";
-          }else{
-            replyActionsImg.src = "/images/icon-edit.svg";
-            replyActionsImg.alt = "icon-edit";
-          }
-
-          //Append elements reply
-          replyUserInfosDiv.appendChild(replyUserImg);
-          replyUserInfosDiv.appendChild(replyUserName);
-          replyUserInfosDiv.appendChild(replyDate);
-
-          replyUserDiv.appendChild(replyUserInfosDiv);
-
-          replyTextDiv.appendChild(replyTextP);
-
-          replyInteractionsDiv.appendChild(replyFeedbackDiv);
-          replyInteractionsDiv.appendChild(replyActionsDiv);
-
-          replyFeedbackDiv.appendChild(replyFeedbackImgPlus);
-          replyFeedbackDiv.appendChild(replyFeedbackScore);
-          replyFeedbackDiv.appendChild(replyFeedbackImgMinus);
-
-          replyActionsDiv.appendChild(replyActionsImg);
-
-          replyCommentDiv.appendChild(replyUserDiv);
-          replyCommentDiv.appendChild(replyTextDiv);
-          replyCommentDiv.appendChild(replyInteractionsDiv);
-
-
-
-          comments.appendChild(replyCommentDiv);
-
-          commentDivContent.appendChild(replyCommentDiv);
-        })
-
-      }
-    });
-
-    //New comment div
-    //Create elements
-    let newCommentDiv = document.createElement("div");
-    newCommentDiv.classList.add("new-comment-div");
-
-    let newCommentUser = document.createElement("div");
-    newCommentUser.classList.add("new-comment-div-user");
-
-    let newCommentUserImage = document.createElement("img");
-    newCommentUserImage.src = `${data.currentUser.image.png}`;
-    newCommentUserImage.alt = `${data.currentUser.image.alt}`;
-
-    let newCommentUserForm = document.createElement("form");
-    newCommentUserForm.classList.add("new-comment-div-user-form")
-    newCommentUserForm.setAttribute('action', '');
-    newCommentUserForm.setAttribute('id', 'novo-comentario');
-
-    let newCommentUserFormText = document.createElement("input");
-    newCommentUserFormText.setAttribute('type', 'text');
-    newCommentUserFormText.setAttribute('placeholder', 'Add a comment...');
-    newCommentUserFormText.setAttribute('id', 'novo-comentario-texto');
-    newCommentUserFormText.setAttribute('required', '');
-    newCommentUserFormText.classList.add("new-comment-div-user-form-text")
-
-    let newCommentUserFormButton = document.createElement("input");
-    newCommentUserFormButton.setAttribute('type', 'submit');
-    newCommentUserFormButton.setAttribute('value', 'send');
-    newCommentUserFormButton.classList.add("new-comment-div-user-form-button");
-
-
-    //Append elements
-    newCommentUserForm.appendChild(newCommentUserFormText)
-    newCommentUserForm.appendChild(newCommentUserFormButton)
-
-    newCommentUser.appendChild(newCommentUserImage);
-    newCommentUser.appendChild(newCommentUserForm)
-
-    newCommentDiv.appendChild(newCommentUser);
-
-    newComment.appendChild(newCommentDiv);
-
-
-    
-
-    //Adicionar novo comentário
-    const novoComentarioForm = document.getElementById("novo-comentario");
-
-    novoComentarioForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      let textoComentario = document.getElementById("novo-comentario-texto").value;
-
-      //criando elementos
-
-      let commentDiv = document.createElement("div");
-      commentDiv.classList.add("comments-comment")
+      elemento.style.cssText =
+      'color: #FFF;' +
+      'background: #5457b6;' +
+      'max-width: 5rem;' +
+      'transition: .4s;' +
+      'justify-content: center;';
       
+      textoEditavel.setAttribute("contenteditable","true")
+      textoEditavel.style.border = "solid 1px #5457b6"
 
-      let commentDivContent = document.createElement("div");
-      commentDivContent.classList.add("comments-comment-content")
+      
+      
+      divComentario.appendChild(botaoApagar);
 
-      let userDiv = document.createElement("div");
-      userDiv.classList.add("comments-comment-user")
+      //apagando comentario
+      let modalApagarComentario = document.querySelector(".delete-comment-div");
+      let botaoCancelarApagarComentario = document.querySelector(".delete-comment-div-content-buttons-cancel");
+      let botaoContinuarApagarComentario = document.querySelector(".delete-comment-div-content-buttons-delete");
 
-      let userInfosDiv = document.createElement("div");
-      userInfosDiv.classList.add("comments-comment-user-infos")
-
-      let userImg = document.createElement("img");
-      userImg.src = `${data.currentUser.image.png}`;
-      userImg.alt = `${data.currentUser.image.alt}`;
-
-      let userName = document.createElement("h3");
-      userName.classList.add("comments-comment-user-infos-name");
-      userName.textContent = data.currentUser.username;
-
-      let date = document.createElement("div");
-      date.classList.add("comments-comment-user-infos-date");
-      date.textContent = 'Now';
-
-      let textDiv = document.createElement("div");
-      textDiv.classList.add("comments-comment-text");
-
-      let textP = document.createElement("p");
-      textP.textContent = textoComentario;
-
-      let interactionsDiv = document.createElement("div");
-      interactionsDiv.classList.add("comments-comment-interactions");
-
-      let feedbackDiv = document.createElement("div");
-      feedbackDiv.classList.add("comments-comment-interactions-feedback");
-
-      let feedbackImgPlus = document.createElement("img");
-      feedbackImgPlus.src = "/images/icon-plus.svg";
-      feedbackImgPlus.alt = "icon-plus";
-      feedbackImgPlus.setAttribute('data-feedback', 'plus');
-
-      let feedbackScore = document.createElement("input");
-      feedbackScore.classList.add("comments-comment-interactions-feedback-score");
-      feedbackScore.setAttribute('value', `0`)
-      feedbackScore.setAttribute('type', 'number');
-
-
-      let feedbackImgMinus = document.createElement("img");
-      feedbackImgMinus.src = "/images/icon-minus.svg";
-      feedbackImgMinus.alt = "icon-minus";
-      feedbackImgMinus.setAttribute('data-feedback', 'minus');
-
-      let actionsDiv = document.createElement("div");
-      actionsDiv.classList.add("comments-comment-interactions-actions","comments-comment-interactions-actions-current-user");
-      actionsDiv.innerHTML = "Edit"
-
-      let actionsImg = document.createElement("img");
-      actionsImg.src = "/images/icon-edit.svg";
-      actionsImg.alt = "icon-edit";
-
-      //append elementos
-
-      userInfosDiv.appendChild(userImg);
-      userInfosDiv.appendChild(userName);
-      userInfosDiv.appendChild(date);
-
-      userDiv.appendChild(userInfosDiv);
-
-      textDiv.appendChild(textP);
-
-      interactionsDiv.appendChild(feedbackDiv);
-      interactionsDiv.appendChild(actionsDiv);
-
-      feedbackDiv.appendChild(feedbackImgPlus);
-      feedbackDiv.appendChild(feedbackScore);
-      feedbackDiv.appendChild(feedbackImgMinus);
-
-      actionsDiv.appendChild(actionsImg);
-
-      commentDiv.appendChild(userDiv);
-      commentDiv.appendChild(textDiv);
-      commentDiv.appendChild(interactionsDiv);
-
-      commentDivContent.appendChild(commentDiv);
-
-      comments.appendChild(commentDivContent);
-
-      novoComentarioForm.reset();
-    })
-
-    //adicionar like e deslike nos comentários
-    const ratingButtons = document.querySelectorAll("[data-feedback]");
-    ratingButtons.forEach((elemento) => {
-      elemento.addEventListener("click", (evento) => {
-        elemento.parentNode.style.pointerEvents = "none";
-        let contadorLikes = parseInt(elemento.parentNode.children[1].value);
-        if (elemento.dataset.feedback == "plus") {
-          console.log('plus')
-          elemento.parentNode.children[1].value = contadorLikes + 1;
-        }
-        if (elemento.dataset.feedback == "minus") {
-          console.log("minus")
-          elemento.parentNode.children[1].value = contadorLikes - 1;
-        }
+      botaoApagar.addEventListener("click", ()=>{
+        modalApagarComentario.classList.add("delete-comment-div-active");
       })
-    });
-    //fim adicionar likes e delsikes nos comentários
+      
+      botaoContinuarApagarComentario.addEventListener("click", ()=>{
+        modalApagarComentario.classList.remove("delete-comment-div-active")
+        divComentario.remove();
+      })
 
+      botaoCancelarApagarComentario.addEventListener("click", ()=>{
+        modalApagarComentario.classList.remove("delete-comment-div-active")
+      })
 
+    }else{
+      divComentario.querySelector('.comments-reply-delete').remove()
+      elemento.innerHTML = "Edit <img src='/images/icon-edit.svg' alt='icon-edit'>"
+
+      elemento.style.cssText =
+      'color: #5457b6;' +
+      'background: none;' +
+      'max-width: 3.25rem;' +
+      'transition: .4s;' +
+      'justify-content: space-between;';  
+
+      textoEditavel.removeAttribute("contenteditable")
+      textoEditavel.style.border = "none"
+      console.log("não ativo")
+    }
+    
   })
-  .catch((error) => {
-    // Show error message
-    comments.innerHTML = `<div class="error">Error: ${error.message}</div>`;
-  });
+})
+
+//apagando comentario
+
+
+
+//adicionando avaliaçao comentários
+const ratingButtons = document.querySelectorAll("[data-feedback]")
+
+ratingButtons.forEach((elemento) => {
+  elemento.addEventListener("click", () => {
+    let contadorLikes = parseInt(elemento.parentNode.children[1].value);
+    let nomeUser = elemento.parentNode.parentNode.parentNode.children[0].children[0].children[1].innerText;
+    elemento.parentNode.style.pointerEvents = "none";
+    if (elemento.dataset.feedback == "plus" && nomeUser != 'juliusomo') {
+      console.log('plus')
+      elemento.parentNode.children[1].value = contadorLikes + 1;
+    }
+    if (elemento.dataset.feedback == "minus" && nomeUser != 'juliusomo') {
+      console.log("minus")
+      elemento.parentNode.children[1].value = contadorLikes - 1;
+    }
+  })
+});
+
+//fim adicionar likes e delsikes nos comentários
+
+
+
+
 
 
 

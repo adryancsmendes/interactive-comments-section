@@ -22,16 +22,123 @@
   <div class="container">
     <main class="principal">
 
-      <div class="comments"  id="comments-div">
-
-        <!-- Dynamic content here -->
-
+      <div class="comments" id="comments-div">
+        <div class="comments-comment-content">
+          <div class="comments-comment">
+            <div class="comments-comment-user">
+              <div class="comments-comment-user-infos"><img src="./images/avatars/image-amyrobson.png"
+                  alt="avatar of Amy Robson">
+                <h3 class="comments-comment-user-infos-name">amyrobson</h3>
+                <div class="comments-comment-user-infos-date">1 month ago</div>
+              </div>
+            </div>
+            <div class="comments-comment-text">
+              <p>Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've
+                nailed the design and the responsiveness at various breakpoints works really well.</p>
+            </div>
+            <div class="comments-comment-interactions">
+              <div class="comments-comment-interactions-feedback"><img src="/images/icon-plus.svg" alt="icon-plus"
+                  data-feedback="plus">
+                <input class="comments-comment-interactions-feedback-score" value="12" type="number">
+                <img src="/images/icon-minus.svg" alt="icon-minus" data-feedback="minus">
+              </div>
+              <div class="comments-comment-interactions-actions">Reply<img src="/images/icon-reply.svg"
+                  alt="icon-reply"></div>
+            </div>
+          </div>
+        </div>
+        <div class="comments-comment-content">
+          <div class="comments-comment">
+            <div class="comments-comment-user">
+              <div class="comments-comment-user-infos"><img src="./images/avatars/image-maxblagun.png"
+                  alt="avatar of Max Blagun">
+                <h3 class="comments-comment-user-infos-name">maxblagun</h3>
+                <div class="comments-comment-user-infos-date">2 weeks ago</div>
+              </div>
+            </div>
+            <div class="comments-comment-text">
+              <p>Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to
+                dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!</p>
+            </div>
+            <div class="comments-comment-interactions">
+              <div class="comments-comment-interactions-feedback"><img src="/images/icon-plus.svg" alt="icon-plus"
+                  data-feedback="plus"><input class="comments-comment-interactions-feedback-score" value="5"
+                  type="number"><img src="/images/icon-minus.svg" alt="icon-minus" data-feedback="minus"></div>
+              <div class="comments-comment-interactions-actions">Reply<img src="/images/icon-reply.svg"
+                  alt="icon-reply"></div>
+            </div>
+          </div>
+          <div class="comments-comment comments-reply">
+            <div class="comment-comments-user comment-comments-reply-user">
+              <div class="comments-comment-user-infos comments-comment-reply-user-infos"><img
+                  src="./images/avatars/image-ramsesmiron.png" alt="avatar of Ramses Miron">
+                <h3 class="comments-comment-user-infos-name comments-comment-reply-user-infos-name">ramsesmiron</h3>
+                <div class="comments-comment-user-infos-date comments-comment-reply-user-infos-date">1 week ago</div>
+              </div>
+            </div>
+            <div class="comments-comment-text comments-comment-reply-text">
+              <p>If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering
+                React. It's very tempting to jump ahead but lay a solid foundation first.</p>
+            </div>
+            <div class="comments-comment-interactions comments-comment-reply-interactions">
+              <div class="comments-comment-interactions-feedback comments-comment-reply-interactions-feedback"><img
+                  src="/images/icon-plus.svg" alt="icon-plus" data-feedback="plus" ><input
+                  class="comments-comment-interactions-feedback-score comments-comment-reply-interactions-feedback-score"
+                  value="4" type="number"><img src="/images/icon-minus.svg" alt="icon-minus" data-feedback="minus">
+              </div>
+              <div class="comments-comment-interactions-actions comments-comment-reply-interactions-actions">Reply<img
+                  src="/images/icon-reply.svg" alt="icon-reply"></div>
+            </div>
+          </div>
+          <div class="comments-comment comments-reply">
+            <div class="comment-comments-user comment-comments-reply-user">
+              <div class="comments-comment-user-infos comments-comment-reply-user-infos"><img
+                  src="./images/avatars/image-juliusomo.png" alt="avatar of Julius Somo">
+                <h3 class="comments-comment-user-infos-name comments-comment-reply-user-infos-name">juliusomo</h3>
+                <div class="comments-comment-user-infos-tag comments-comment-reply-user-infos-tag">you</div>
+                <div class="comments-comment-user-infos-date comments-comment-reply-user-infos-date">2 days ago</div>
+              </div>
+            </div>
+            <div class="comments-comment-text comments-comment-reply-text">
+              <p>I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the
+                newest library/framework. But the fundamentals are what stay constant.</p>
+            </div>
+            <div class="comments-comment-interactions comments-comment-reply-interactions">
+              <div class="comments-comment-interactions-feedback comments-comment-reply-interactions-feedback"><img
+                  src="/images/icon-plus.svg" alt="icon-plus" data-feedback="plus" ><input
+                  class="comments-comment-interactions-feedback-score comments-comment-reply-interactions-feedback-score"
+                  value="2" type="number"><img src="/images/icon-minus.svg" alt="icon-minus" data-feedback="minus">
+              </div>
+              <div
+                class="comments-comment-interactions-actions comments-comment-reply-interactions-actions comments-comment-reply-interactions-actions-current-user">
+                Edit<img src="/images/icon-edit.svg" alt="icon-edit"></div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="new-comment" id="new-comment">
 
         <!-- Dynamic content here -->
 
+        <div class="new-comment-div">
+          <div class="new-comment-div-user"><img src="./images/avatars/image-juliusomo.png" alt="your avatar">
+            <form class="new-comment-div-user-form" action="" id="novo-comentario"><input type="text"
+                placeholder="Add a comment..." id="novo-comentario-texto" required=""
+                class="new-comment-div-user-form-text"><input type="submit" value="send"
+                class="new-comment-div-user-form-button"></form>
+          </div>
+        </div>
+      </div>
+      <div class="delete-comment-div">
+        <div class="delete-comment-div-content">
+          <h3>Delete comment</h3>
+          <p>Are you sure you want to delete this comment? Thill will remove the comment and can't be undone.</p>
+          <div class="delete-comment-div-content-buttons">
+          <button class="delete-comment-div-content-buttons-cancel">No, cancel</button>
+          <button class="delete-comment-div-content-buttons-delete"> Yes, delete</button>
+          </div>
+        </div>
       </div>
     </main>
   </div>
