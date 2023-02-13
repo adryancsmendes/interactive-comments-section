@@ -224,6 +224,15 @@
   object-fit: contain;
   max-height: 0.75rem;
 }
+* body .container .principal .comments-comment-interactions .reply {
+  transition: 0.4s;
+}
+* body .container .principal .comments-comment-interactions .reply:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transform: scale(1.1);
+  transition: 0.4s;
+}
 * body .container .principal .comments-comment-text {
   color: #67727e;
   line-height: 1.5rem;
@@ -234,6 +243,133 @@
   flex-direction: column;
   align-items: flex-end;
   position: relative;
+}
+* body .container .principal .comments-comment-content .new-comment-div {
+  width: 100%;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+}
+* body .container .principal .comments-comment-content .new-comment-div-user {
+  width: 100%;
+  position: relative;
+}
+* body .container .principal .comments-comment-content .new-comment-div-user-infos {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: center;
+}
+* body .container .principal .comments-comment-content .new-comment-div-user-infos img {
+  position: relative;
+}
+* body .container .principal .comments-comment-content .new-comment-div-user-infos h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #324152;
+}
+* body .container .principal .comments-comment-content .new-comment-div-user-infos-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #5457b6;
+  padding: 0.15rem 0.25rem;
+  color: #fff;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+}
+* body .container .principal .comments-comment-content .new-comment-div-user-infos-date {
+  color: #67727e;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub {
+  display: flex;
+  justify-content: space-between;
+  min-height: 5rem;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-text {
+  width: 100%;
+  max-width: 28rem;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-text p {
+  border: solid 1px #5457b6;
+  border-radius: 0.5rem;
+  height: 100%;
+  padding: 1rem;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions {
+  width: 100%;
+  max-width: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-reply {
+  padding: 0.75rem;
+  color: #fff;
+  border: none;
+  background: #5457b6;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-reply:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: 0.4s;
+  opacity: 0.5;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-cancel {
+  font-weight: 500;
+  border: none;
+  color: #ed6468;
+  background: none;
+  transition: 0.4s;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-cancel:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: 0.4s;
+  opacity: 0.5;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-edit {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  justify-content: space-between;
+  align-items: center;
+  color: #5457b6;
+  font-weight: 500;
+  bottom: 1rem;
+  right: 1rem;
+  width: 100%;
+  max-width: 3.25rem;
+  border-radius: 0.5rem;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-edit img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 0.75rem;
+}
+* body .container .principal .comments-comment-content .new-comment-div-sub-interactions-send {
+  padding: 0.75rem;
+  color: #fff;
+  border: none;
+  background: #5457b6;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+  position: absolute;
+  font-weight: 500;
+  bottom: 1rem;
+  right: 1rem;
+  width: 100%;
+  max-width: 5rem;
 }
 * body .container .principal .comments-comment-content:nth-child(2)::before {
   position: absolute;

@@ -138,6 +138,8 @@ function editarComentario() {
         //habilitando edição texto
         textoEditavel.setAttribute("contenteditable", "true")
         textoEditavel.style.border = "solid 1px #5457b6"
+        textoEditavel.style.borderRadius = "0.5rem";
+        textoEditavel.style.padding = "0.5rem";
 
         //atualizando botao editar para update
         botaoEditar.innerHTML = "UPDATE"
@@ -173,6 +175,7 @@ function editarComentario() {
         //desabilitando edição de texto
         textoEditavel.removeAttribute("contenteditable")
         textoEditavel.style.border = "none"
+        textoEditavel.style.padding = "0";
 
         //retornando botao update ao estado normal de edit
         botaoEditar.innerHTML = "Edit <img src='/images/icon-edit.svg' alt='icon-edit'>"
@@ -191,7 +194,7 @@ function editarComentario() {
 }
 
 
-//editando comentário
+//editando comentário exitente
 let botaoEditar = document.querySelectorAll(".comments-comment-reply-interactions-actions-current-user");
 
 botaoEditar.forEach((elemento) => {
@@ -220,11 +223,13 @@ botaoEditar.forEach((elemento) => {
         'background: #5457b6;' +
         'max-width: 5rem;' +
         'transition: .4s;' +
-        'justify-content: center;';
+        'justify-content: center;'; 
 
       textoEditavel.setAttribute("contenteditable", "true")
       textoEditavel.style.border = "solid 1px #5457b6"
-
+      textoEditavel.style.borderRadius = "0.5rem";
+      textoEditavel.style.padding = "0.5rem";
+      
       divComentario.appendChild(botaoApagar);
 
       //apagando comentario
@@ -258,6 +263,7 @@ botaoEditar.forEach((elemento) => {
 
       textoEditavel.removeAttribute("contenteditable")
       textoEditavel.style.border = "none"
+      textoEditavel.style.padding = "0";
       console.log("não ativo")
     }
 
@@ -283,7 +289,132 @@ ratingButtons.forEach((elemento) => {
   })
 });
 
-//fim adicionar likes e delsikes nos comentários
+//adicionando nova resposta
+
+let botaoResposta = document.querySelectorAll(".reply");
+
+botaoResposta.forEach((botao) =>{
+  botao.addEventListener("click", ()=>{
+    let divComentario = botao.parentNode.parentNode.parentNode;
+    
+    //create elements
+    let newCommentDiv = document.createElement("div");
+    newCommentDiv.classList.add("new-comment-div");
+
+    let newCommentDivUser = document.createElement("div");
+    newCommentDivUser.classList.add("new-comment-div-user");
+
+    let newCommentDivUserInfos = document.createElement("div");
+    newCommentDivUserInfos.classList.add("new-comment-div-user-infos");
+
+    let newCommentDivUserInfosImg = document.createElement("img");
+    newCommentDivUserInfosImg.src = "/images/avatars/image-juliusomo.png";
+    newCommentDivUserInfosImg.alt = "your avatar";
+
+    let newCommentDivUserInfosName = document.createElement("h3");
+    newCommentDivUserInfosName.innerHTML = "juliusomo";
+
+    let newCommentDivUserInfosTag = document.createElement("div");
+    newCommentDivUserInfosTag.innerHTML = "you";
+    newCommentDivUserInfosTag.classList.add("new-comment-div-user-infos-tag")
+
+    let newCommentDivUserInfosDate = document.createElement("div");
+    newCommentDivUserInfosDate.classList.add("new-comment-div-user-infos-date")
+    newCommentDivUserInfosDate.innerHTML = "Now";
+
+    let newCommentDivSubdivision = document.createElement("div");
+    newCommentDivSubdivision.classList.add("new-comment-div-sub") 
+
+    let newCommentDivText = document.createElement("div");
+    newCommentDivText.classList.add("new-comment-div-sub-text")
+
+    let newCommentDivTextP = document.createElement("p");
+    newCommentDivTextP.setAttribute("contenteditable","true");
+
+    let newCommentDivInteractions = document.createElement("div");
+    newCommentDivInteractions.classList.add("new-comment-div-sub-interactions")
+
+    let newCommentDivReplyButton = document.createElement("button");
+    newCommentDivReplyButton.classList.add("new-comment-div-sub-interactions-reply")
+    newCommentDivReplyButton.innerHTML = "REPLY";
+
+    let newCommentDivCancelButton = document.createElement("button");
+    newCommentDivCancelButton.classList.add("new-comment-div-sub-interactions-cancel")
+    newCommentDivCancelButton.innerHTML = "CANCEL";
+
+    let newCommentDivSendButton = document.createElement("button");
+    newCommentDivSendButton.classList.add("new-comment-div-sub-interactions-send")
+    newCommentDivSendButton.innerHTML = "SEND";
+
+    let newCommentDivEditButton = document.createElement("div");
+    newCommentDivEditButton.classList.add("new-comment-div-sub-interactions-edit");
+    newCommentDivEditButton.innerHTML = "Edit"
+    
+
+    let newCommentDivEditButtonImg = document.createElement("img");
+    newCommentDivEditButtonImg.src = "/images/icon-edit.svg";
+    newCommentDivEditButtonImg.alt = "icon-edit";
+
+    //append elements
+    newCommentDivText.appendChild(newCommentDivTextP);
+
+    newCommentDivUserInfos.appendChild(newCommentDivUserInfosImg);
+    newCommentDivUserInfos.appendChild(newCommentDivUserInfosName);
+    newCommentDivUserInfos.appendChild(newCommentDivUserInfosTag);
+    newCommentDivUserInfos.appendChild(newCommentDivUserInfosDate);
+
+    newCommentDivUser.appendChild(newCommentDivUserInfos)
+
+    newCommentDivEditButton.appendChild(newCommentDivEditButtonImg);
+
+    newCommentDivInteractions.appendChild(newCommentDivReplyButton);
+    newCommentDivInteractions.appendChild(newCommentDivCancelButton);
+
+    newCommentDivSubdivision.appendChild(newCommentDivText)
+    newCommentDivSubdivision.appendChild(newCommentDivInteractions)
+
+    newCommentDiv.appendChild(newCommentDivUser);
+    newCommentDiv.appendChild(newCommentDivSubdivision);
+
+    divComentario.appendChild(newCommentDiv);
+
+
+    //funcionalidades
+
+    //cancela adição de novo comentario
+    newCommentDivCancelButton.onclick = ()=>{
+      divComentario.removeChild(newCommentDiv);
+    }
+
+    //publica comentario
+    newCommentDivInteractions.onclick = ()=>{
+      newCommentDivTextP.removeAttribute("contenteditable");
+      newCommentDivTextP.style.border = "none";
+      newCommentDivCancelButton.style.display = "none";
+      newCommentDivReplyButton.style.display = "none";
+      newCommentDivSubdivision.style.maxWidth = "100%";
+      newCommentDivInteractions.appendChild(newCommentDivEditButton);
+    }
+
+    //editar comentario resposta
+    newCommentDivEditButton.onclick = () =>{
+      console.log("oi")
+      newCommentDivText.setAttribute("contenteditable","true");
+      console.log(newCommentDivTextP);
+      
+      newCommentDivInteractions.appendChild(newCommentDivSendButton);
+      newCommentDivInteractions.removeChild(newCommentDivEditButton);
+    }
+
+    newCommentDivSendButton.onclick = () =>{
+      console.log("oi");
+      newCommentDivInteractions.removeChild(newCommentDivSendButton);
+      newCommentDivInteractions.appendChild(newCommentDivEditButton)
+      newCommentDivText.removeAttribute("contenteditable");
+    }
+
+  })
+})
 
 
 
