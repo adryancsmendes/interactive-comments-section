@@ -128,7 +128,7 @@
                                 display: flex
                                 flex-direction: row-reverse
                                 width: 100%
-                                max-width: 4.25rem
+                                max-width: 3.25rem
                                 justify-content: space-between
                                 align-items: center
                                 color: red
@@ -137,6 +137,10 @@
                                 right: 1rem
                                 font-weight: 500
                                 transition: .4s
+                                font-size: 0.75rem
+                                @include mixins.medium-devices
+                                    font-size: 1rem
+                                    max-width: 4.25rem
 
                                 &:hover
                                     cursor: pointer
@@ -149,6 +153,10 @@
                                 @include mixins.flex-center
                                 justify-content: flex-start
                                 gap: 0.75rem
+                                font-size: 0.75rem
+
+                                @include mixins.medium-devices
+                                    font-size: 1rem
 
                                 img
                                     max-width: 2rem
@@ -270,6 +278,10 @@
                                 justify-content: space-between
                                 gap: 1rem
                                 position: relative
+                                padding-bottom: 3rem
+
+                                @include mixins.medium-devices
+                                    padding-bottom: 1rem
 
                                 &-user
                                     width: 100%
@@ -307,8 +319,15 @@
 
                                 &-sub
                                     display: flex
+                                    flex-direction: column
                                     justify-content: space-between
+                                    gap: 1rem
                                     min-height: 5rem
+
+                                    @include mixins.medium-devices
+                                        flex-direction: row
+                                        min-height: 6rem
+
 
                                     &-text
                                         width: 100%
@@ -323,10 +342,15 @@
 
                                     &-interactions
                                         width: 100%
-                                        max-width: 6rem
+                                        max-width: 8rem
                                         display: flex
-                                        flex-direction: column
                                         justify-content: space-between
+                                        align-self: flex-end
+                                        @include mixins.medium-devices
+                                            justify-content: space-around
+                                            align-self: initial
+                                            flex-direction: column
+                                            max-width: 6rem
 
                                         &-reply
                                             padding: 0.75rem
@@ -405,7 +429,7 @@
                                             display: flex
                                             flex-direction: row-reverse
                                             width: 100%
-                                            max-width: 4.25rem
+                                            max-width: 3.25rem
                                             justify-content: space-between
                                             align-items: center
                                             color: red
@@ -414,11 +438,16 @@
                                             right: 1rem
                                             font-weight: 500
                                             transition: .4s
+                                            font-size: 0.75rem
+                                            @include mixins.medium-devices
+                                                font-size: 1rem
+                                                max-width: 4.25rem
 
                                             &:hover
                                                 cursor: pointer
                                                 transition: .4s
                                                 transform: scale(1.1)
+
  
 
                             &:nth-child(2)
@@ -450,7 +479,7 @@
                                     display: flex
                                     flex-direction: row-reverse
                                     width: 100%
-                                    max-width: 4.25rem
+                                    max-width: 3.25rem
                                     justify-content: space-between
                                     align-items: center
                                     color: red
@@ -459,6 +488,10 @@
                                     right: 1rem
                                     font-weight: 500
                                     transition: .4s
+                                    font-size: 0.75rem
+                                    @include mixins.medium-devices
+                                        max-width: 4.25rem
+                                        font-size: 1rem
 
                                     &:hover
                                         cursor: pointer

@@ -126,7 +126,7 @@
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
-  max-width: 4.25rem;
+  max-width: 3.25rem;
   justify-content: space-between;
   align-items: center;
   color: red;
@@ -135,6 +135,13 @@
   right: 1rem;
   font-weight: 500;
   transition: 0.4s;
+  font-size: 0.75rem;
+}
+@media (min-width: 768px) {
+  * body .container .principal .comments-comment-new .comments-comment-delete {
+    font-size: 1rem;
+    max-width: 4.25rem;
+  }
 }
 * body .container .principal .comments-comment-new .comments-comment-delete:hover {
   cursor: pointer;
@@ -147,6 +154,12 @@
   align-items: center;
   justify-content: flex-start;
   gap: 0.75rem;
+  font-size: 0.75rem;
+}
+@media (min-width: 768px) {
+  * body .container .principal .comments-comment-user-infos {
+    font-size: 1rem;
+  }
 }
 * body .container .principal .comments-comment-user-infos img {
   max-width: 2rem;
@@ -261,6 +274,12 @@
   justify-content: space-between;
   gap: 1rem;
   position: relative;
+  padding-bottom: 3rem;
+}
+@media (min-width: 768px) {
+  * body .container .principal .comments-comment-content .new-comment-div {
+    padding-bottom: 1rem;
+  }
 }
 * body .container .principal .comments-comment-content .new-comment-div-user {
   width: 100%;
@@ -298,8 +317,16 @@
 }
 * body .container .principal .comments-comment-content .new-comment-div-sub {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 1rem;
   min-height: 5rem;
+}
+@media (min-width: 768px) {
+  * body .container .principal .comments-comment-content .new-comment-div-sub {
+    flex-direction: row;
+    min-height: 6rem;
+  }
 }
 * body .container .principal .comments-comment-content .new-comment-div-sub-text {
   width: 100%;
@@ -313,10 +340,18 @@
 }
 * body .container .principal .comments-comment-content .new-comment-div-sub-interactions {
   width: 100%;
-  max-width: 6rem;
+  max-width: 8rem;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  align-self: flex-end;
+}
+@media (min-width: 768px) {
+  * body .container .principal .comments-comment-content .new-comment-div-sub-interactions {
+    justify-content: space-around;
+    align-self: initial;
+    flex-direction: column;
+    max-width: 6rem;
+  }
 }
 * body .container .principal .comments-comment-content .new-comment-div-sub-interactions-reply {
   padding: 0.75rem;
@@ -393,7 +428,7 @@
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
-  max-width: 4.25rem;
+  max-width: 3.25rem;
   justify-content: space-between;
   align-items: center;
   color: red;
@@ -402,6 +437,13 @@
   right: 1rem;
   font-weight: 500;
   transition: 0.4s;
+  font-size: 0.75rem;
+}
+@media (min-width: 768px) {
+  * body .container .principal .comments-comment-content .new-comment-div-sub-interactions-delete {
+    font-size: 1rem;
+    max-width: 4.25rem;
+  }
 }
 * body .container .principal .comments-comment-content .new-comment-div-sub-interactions-delete:hover {
   cursor: pointer;
@@ -433,7 +475,7 @@
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
-  max-width: 4.25rem;
+  max-width: 3.25rem;
   justify-content: space-between;
   align-items: center;
   color: red;
@@ -442,6 +484,13 @@
   right: 1rem;
   font-weight: 500;
   transition: 0.4s;
+  font-size: 0.75rem;
+}
+@media (min-width: 768px) {
+  * body .container .principal .comments-comment-content .comments-reply .comments-reply-delete {
+    max-width: 4.25rem;
+    font-size: 1rem;
+  }
 }
 * body .container .principal .comments-comment-content .comments-reply .comments-reply-delete:hover {
   cursor: pointer;
