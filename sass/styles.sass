@@ -123,6 +123,12 @@
                         &-new
                             position: relative
 
+                            .comments-comment-text
+                                max-width: 28rem
+                                
+                                p
+                                    min-height: 6rem
+
                             .comments-comment-delete
                                 visibility: hidden
                                 display: flex
@@ -175,6 +181,9 @@
 
                                 &-date
                                     color: variables.$grayish-blue
+                        
+                        
+
 
                         &-interactions
                             color: variables.$moderate-blue
@@ -227,6 +236,7 @@
                                 justify-content: space-between
                                 align-items: center
                                 max-width: 4rem
+                                border-radius: 0.5rem
 
                             
                                 
@@ -260,12 +270,16 @@
                             color: variables.$grayish-blue
                             line-height: 1.5rem
                             word-break: break-word
+                            width: 100%
+                            
+                            
                             
                         &-content
                             display: flex
                             flex-direction: column
                             align-items: flex-end
                             position: relative
+                            width: 100%
 
                             .new-comment-div
                                 width: 100%
@@ -418,6 +432,7 @@
                                             right: 1rem
                                             width: 100%
                                             max-width: 5rem
+                                            
 
                                             &:hover
                                                 cursor: pointer
